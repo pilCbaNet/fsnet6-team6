@@ -1,1 +1,19 @@
 @import '~bootstrap-icons/font/bootstrap-icons.css';
+
+header.fondo {
+    padding-top: 8rem;
+    padding-bottom: 6rem;
+    padding-left: 2rem;
+    text-align: left;
+    color: #fff;
+    background-image: url("/assets/img/bitcoin.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  h1.mensaje-bienvenida {
+    line-height: 1.5rem;
+    margin-bottom: 25px;
+  }

@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { MovimientosComponent } from './movimientos/movimientos.component';
+import { Pagina404Component } from './pagina404/pagina404.component';
 
 
 
@@ -13,6 +14,7 @@ import { MovimientosComponent } from './movimientos/movimientos.component';
     IniciarSesionComponent,
     RegistroComponent,
     MovimientosComponent,
+    Pagina404Component,
   ],
   imports: [
     CommonModule

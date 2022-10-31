@@ -1,1 +1,27 @@
-<p>movimientos works!</p>
+<div class="conteiner d-flex justify-content-center mt-3">
+  <div class="card border-light mb-2">
+    <table *ngIf="mostrarMovimientos" class="table table-hover">
+      <thead>
+        <tr class="table-light" style="opacity: ;">
+          <th scope="col">Tipo</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Dia</th>
+          <th scope="col">Hora</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movimiento of movimientos; let i=index" class="table">
+            <td *ngIf="i<10">{{movimiento.operacion}}</td>
+            <td *ngIf="movimiento.operacion == 'Extracción' && i<3 ;else elseBlock" style="color:red">{{movimiento.monto|currency}}</td>
+            <ng-template #elseBlock>
+              <td *ngIf="i<10" style="color:rgb(12, 245, 12)">{{movimiento.monto|currency}}</td>
+            </ng-template>
+            <td *ngIf="i<10">{{movimiento.fecha}}</td>
+            <td *ngIf="i<10">{{movimiento.hora}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary">Mostrar mas movimientos</button>
+  </div>
+</div>
+

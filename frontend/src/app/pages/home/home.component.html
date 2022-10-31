@@ -1,11 +1,62 @@
-<div class="conteiner mt-3">
-  <div class="col-12 text-center">
-    <h1>Bienvenidos a la pagina</h1>
+<div class="conteiner">
+  <div class="row justify-content-center text-center">
+    <div class="card col-12 p-3 rounded-3" style="background-color: #FFD700;">
+      <div class="rounded-3 p-2" style="width: 100%;background-color: #FFD700;">
+        <h3 style="color: rgb(3, 54, 99);font-size: 30px; font-family: 'Oswald', sans-serif;">Bienvenido a la aplicacion
+        </h3>
+      </div>
+    </div>
+    <div class="row justify-content-start mt-0.5 ">
+      <div class="col-md-3">
+        <div class="card rounded-3 bg-primary">
+          <div class="card-body">
+            <ul class="nav flex-column bg-primary   ">
+              <li class="nav-item"  >
+                <a class="nav-link btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal">Tu billetera</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn btn-primary" routerLink="/home/ingresar">Ingresar dinero</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link btn btn-primary" routerLink="/home/transferir">Transferir dinero</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link btn btn-primary" routerLink="/home/movimientos">Movimientos</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link btn btn-primary" routerLink="/home/cotizacion">Cotizaciones</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>  
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Estado de cuenta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12" (keyup)="ObtenerSaldo()">
+            <h5>Saldo actual: {{ObtenerSaldo()|currency}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+
+      </div>
+    </div>
+  </div>
 </div>

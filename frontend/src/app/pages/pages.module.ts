@@ -5,6 +5,15 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
 import { RegistroComponent } from './registro/registro.component';
 import { MovimientosComponent } from './movimientos/movimientos.component';
 import { Pagina404Component } from './pagina404/pagina404.component';
+import { RouterModule } from '@angular/router';
+import { LandingComponent } from './landing/landing.component';
+import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '../layout/layout.module';
+import { IngresarComponent } from './ingresar/ingresar.component';
+import { TransferirComponent } from './transferir/transferir.component';
+import { CotizacionComponent } from './cotizacion/cotizacion.component';
+import { ConfirmarIngresoComponent } from './confirmar-ingreso/confirmar-ingreso.component';
 
 
 
@@ -15,9 +24,26 @@ import { Pagina404Component } from './pagina404/pagina404.component';
     RegistroComponent,
     MovimientosComponent,
     Pagina404Component,
+    LandingComponent,
+    IngresarComponent,
+    TransferirComponent,
+    CotizacionComponent,
+    ConfirmarIngresoComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+    LayoutModule
+  ],
+  exports: [
+    HomeComponent,
+    IniciarSesionComponent,
+    RegistroComponent,
+    MovimientosComponent,
+    Pagina404Component,
+    LandingComponent,
   ]
 })
 export class PagesModule { }

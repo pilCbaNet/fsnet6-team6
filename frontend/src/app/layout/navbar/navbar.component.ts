@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IniciarSesionComponent } from 'src/app/pages/iniciar-sesion/iniciar-sesion.component';
 
 @Component({
   selector: 'app-navbar',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit(): void {

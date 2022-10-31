@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CuentaService } from 'src/app/services/cuenta.service';
 
 @Component({
   selector: 'app-movimientos',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movimientos.component.css']
 })
 export class MovimientosComponent implements OnInit {
-
-  constructor() { }
+  hoy= new Date();
+  mostrarMovimientos: boolean=true;
+  movimientos:any;
+  constructor(cuenta:CuentaService) { 
+    this.movimientos=cuenta.ObtenerUltimosMovimientos();
+  }
 
   ngOnInit(): void {
   }
 
 }
+

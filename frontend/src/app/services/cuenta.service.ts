@@ -19,14 +19,14 @@ export class CuentaService {
             {operacion:"Extracción",monto:1000, fecha: "01/10/2022",hora:"13:31"},
             {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
             {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
-            {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
-            {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
-            {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
-            {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
-            {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
-            {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
-            {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
-            {operacion:"Extracción",monto:500, fecha: "01/10/2022",hora:"13:49"},
+            {operacion:"Depósito",monto:700, fecha: "02/10/2022",hora:"14:34"},
+            {operacion:"Extracción",monto:3000, fecha: "05/10/2022",hora:"17:01"},
+            {operacion:"Extracción",monto:2000, fecha: "09/10/2022",hora:"00:45"},
+            {operacion:"Depósito",monto:5000, fecha: "15/10/2022",hora:"07:34"},
+            {operacion:"Depósito",monto:5000, fecha: "16/10/2022",hora:"02:00"},
+            {operacion:"Depósito",monto:500, fecha: "20/10/2022",hora:"18:21"},
+            {operacion:"Extracción",monto:500, fecha: "25/10/2022",hora:"13:50"},
+            {operacion:"Extracción",monto:500, fecha: "30/10/2022",hora:"13:00"},
         ];
   }
   ObtenerCuentasPropias()

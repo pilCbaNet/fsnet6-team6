@@ -47,7 +47,7 @@ export class IniciarSesionComponent implements OnInit {
       this.myService.iniciarSesion(login).subscribe({
         next:(v) =>{
           this.form.reset();
-          this.router.navigate(['home']);
+          this.router.navigate(['home/tu-billetera']);
         },
         error:(e) => {
           alert("Algo salio mal.")

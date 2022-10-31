@@ -10,6 +10,7 @@ import { MovimientosComponent } from './pages/movimientos/movimientos.component'
 import { Pagina404Component } from './pages/pagina404/pagina404.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { TransferirComponent } from './pages/transferir/transferir.component';
+import { TuBilleteraComponent } from './pages/tu-billetera/tu-billetera.component';
 
 const routes: Routes = [
   {path: 'landing', component: LandingComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   ]},
     {path: 'transferir', pathMatch:'full', component: TransferirComponent},
     {path: 'cotizacion', pathMatch:'full', component: CotizacionComponent},
+    {path: 'tu-billetera', pathMatch:'full', component: TuBilleteraComponent},
   ]},
   {path: '**', component: Pagina404Component}
 ];

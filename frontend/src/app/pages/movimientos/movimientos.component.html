@@ -2,7 +2,7 @@
   <div class="card border-light mb-2">
     <table *ngIf="mostrarMovimientos" class="table table-hover">
       <thead>
-        <tr class="table-light" style="opacity: ;">
+        <tr class="table-light" style="opacity: 1;">
           <th scope="col">Tipo</th>
           <th scope="col">Monto</th>
           <th scope="col">Dia</th>
@@ -12,7 +12,7 @@
       <tbody>
         <tr *ngFor="let movimiento of movimientos; let i=index" class="table">
             <td *ngIf="i<10">{{movimiento.operacion}}</td>
-            <td *ngIf="movimiento.operacion == 'Extracción' && i<3 ;else elseBlock" style="color:red">{{movimiento.monto|currency}}</td>
+            <td *ngIf="movimiento.operacion == 'Extracción' && i<10 ;else elseBlock" style="color:red">{{movimiento.monto|currency}}</td>
             <ng-template #elseBlock>
               <td *ngIf="i<10" style="color:rgb(12, 245, 12)">{{movimiento.monto|currency}}</td>
             </ng-template>

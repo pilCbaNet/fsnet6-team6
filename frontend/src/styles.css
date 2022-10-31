@@ -29,10 +29,9 @@ body{
     padding:15px;
     background:#333;
     color:#fff;
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
-    
   }
 
   .row {

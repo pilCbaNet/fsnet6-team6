@@ -1,0 +1,12 @@
+#header{
+    padding-top: 0.5r0.5em;
+    padding-bottom: 0.5.5rem;
+    padding-right: 0rem;
+    padding-left: 0rem;
+    color: #fff;
+    background-image: url("/../frontend/src/assets/img/Bienvenidos.png");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+}

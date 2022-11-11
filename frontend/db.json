@@ -1,9 +1,19 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "usuario": "sdsdsd",
+      "password": "8989898989",
+      "id": 1
+    },
+    {
+      "usuario": "sdsdsd",
+      "password": "342545545",
+      "id": 2
+    },
+    {
+      "usuario": "sdsdsd",
+      "password": "77576565",
+      "id": 3
     }
   ],
   "comments": [

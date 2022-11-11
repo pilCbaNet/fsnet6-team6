@@ -1,0 +1,8 @@
+a:focus{
+    background-color: rgba(80, 21, 122, 0.489);
+    border-radius: 2em;
+}
+
+a:hover{
+    border-radius: 2em;
+}

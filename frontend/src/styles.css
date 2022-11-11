@@ -1,19 +1,36 @@
-@import '~bootstrap-icons/font/bootstrap-icons.css';
-
-header.fondo {
-    padding-top: 8rem;
-    padding-bottom: 6rem;
-    padding-left: 2rem;
-    text-align: left;
-    color: #fff;
-    background-image: url("/assets/img/bitcoin.jpg");
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center center;
-    background-size: cover;
+html{
+  height: 100%;
+}
+body{
+  display:flex; 
+  flex-direction: column;
+  height: 100%;
+  }
+  .content{
+    width: 100%;
+    height: 400px;
+    position: absolute;
   }
   
-  h1.mensaje-bienvenida {
-    line-height: 1.5rem;
-    margin-bottom: 25px;
+  #header{
+    
   }
+  
+  footer{
+    padding:15px;
+    background:#333;
+    color:#fff;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .row {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}

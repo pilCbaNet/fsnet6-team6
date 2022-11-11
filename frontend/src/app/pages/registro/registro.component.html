@@ -1,1 +1,55 @@
-<p>registro works!</p>
+<div class="conteiner mt-3">
+    <div class="text-center">
+        <div class="col d-flex justify-content-center">
+            <div class="card border-primary mb-3 "  style="max-width: 20rem; min-width: 30rem;">
+                <div class="card-header bg-secondary bg-opacity-50">Registrarse</div>
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="registrar()">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Correo electronico</label>
+                            <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1">
+                            <div *ngIf="Email?.errors && Email?.touched">
+                              <p *ngIf="Email?.hasError('required')" class="text-danger">
+                              El email es requerido.
+                              </p>
+                              <p *ngIf="Email?.errors?.email" class="text-danger">
+                                No es un formato valido.
+                                </p>
+                              </div>
+                          </div>
+                        <div class="mb-3">
+                          <label for="" class="form-label">Usuario</label>
+                          <input type="usuario" class="form-control" formControlName="user" id="exampleInputUsuario1">
+                          <div *ngIf="User?.errors && User?.touched">
+                            <p *ngIf="User?.hasError('required')" class="text-danger">
+                            El usuario es requerido.
+                            </p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1">
+                          <div *ngIf="Password?.errors && Password?.touched">
+                            <p *ngIf="Password?.hasError('required')" class="text-danger">
+                            La contraseña es requerida.
+                            </p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Repita contraseña</label>
+                            <input type="password" class="form-control" formControlName="password1" id="exampleInputPassword1">
+                            <div *ngIf="Password1?.errors && Password1?.touched">
+                              <p *ngIf="Password1?.hasError('required')" class="text-danger">
+                                La contraseña es requerida.
+                              </p>
+                              </div>
+                          </div>
+                        <button type="submit" class="btn btn-secondary">Registrarse</button>
+                      </form>
+                      <br>
+                      <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="conteiner">
+    <div class="row">
+        <div class="col mt-1 d-flex justify-content-center">
+            <div class="card border-light mb-3">
+                <div class="card-header bg-light">Cuentas amigas guardadas</div>
+                <div class="card-body text-center">
+                    <div class="table table-hover border-light" style="border-collapse: collapse;">
+                        <thead *ngIf="cantCuentasTerceros == 0">
+                            <td style="color: aqua;">Identificador</td>
+                            <td style="color: aqua;">DNI</td>
+                            <td style="color: aqua;">Banco</td>
+                            <td style="color: aqua;">CBU</td>
+                            <td style="color: aqua;">Alias</td>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="cantCuentasTerceros == 0">
+                                <tr *ngFor="let cuenta of cuentas; let i=index">
+                                    <td>{{cuenta.ide}}</td>
+                                    <td>{{cuenta.dni}}</td>
+                                    <td>{{cuenta.banco}}</td>
+                                    <td>{{cuenta.cbu}}</td>
+                                    <td>{{cuenta.alias}}</td>
+                                    <td class="btn bg-secondary" style="padding: 2px;">Transferir</td>
+                                </tr>
+                            </ng-container>
+                            
+                        </tbody>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="btn btn-primary mt-1" data-bs-toggle="modal" data-bs-target="#modalCuentaTercero" >
+                Registrar nueva cuenta
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal -->
+<div class="modal" id="modalCuentaTercero">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar nueva cuenta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="cuentaForm" (ngSubmit)="cargarCuenta()">
+              <div class="mb-2 text-start">
+                <label for="" class="form-label">Identificador</label>
+                <input type="ide" formControlName="ide" class="form-control" id="ideLabel">
+                <div *ngIf="Ide?.errors && Ide?.touched">
+                  <p *ngIf="Ide?.hasError('required')" class="text-danger">
+                  El Identificador es requerido.
+                  </p>
+                </div>
+              </div>
+              <div class="mb-2 text-start">
+                <label for="" class="form-label">DNI</label>
+                <input type="dni" formControlName="dni" class="form-control" id="dniLabel">
+                <div *ngIf="Dni?.errors && Dni?.touched">
+                  <p *ngIf="Dni?.hasError('required')" class="text-danger">
+                  El DNI es requerido.
+                  </p>
+                  <p *ngIf="Dni?.errors?.minlength || Dni?.errors?.maxlength " class="text-danger">
+                    El Dni debe ser de 8 digitos.
+                    </p>
+                </div>
+              </div>
+                <div class="mb-2 text-start">
+                  <label for="" class="form-label">Alias</label>
+                  <input type="alias" formControlName="alias" class="form-control" id="aliasLabel">
+                  <div *ngIf="Alias?.errors && Alias?.touched">
+                    <p *ngIf="Alias?.hasError('required')" class="text-danger">
+                    El Alias es requerido.
+                    </p>
+                    <p *ngIf="Alias?.errors?.minlength" class="text-danger">
+                      El Alias debe ser de 8 digitos o mas.
+                      </p>
+                    </div>
+                </div>
+                <div class="mb-2 text-start">
+                  <label for="" class="form-label">CBU</label>
+                  <input type="cbu" formControlName="cbu" class="form-control" id="cbuLabel">
+                  <div *ngIf="Cbu?.errors && Cbu?.touched">
+                    <p *ngIf="Cbu?.hasError('required')" class="text-danger">
+                    El CBU es requerido
+                    </p>
+                    <p *ngIf="Cbu?.errors?.minlength || Cbu?.errors?.maxlength " class="text-danger">
+                      El CBU debe ser de 22 numeros.
+                      </p>
+                    </div>
+                </div>
+                <div class="mb-2 text-start">
+                    <label for="" class="form-label">Banco</label>
+                    <input type="banco" formControlName="banco" class="form-control" id="bancoLabel">
+                    <div *ngIf="Banco?.errors && Banco?.touched">
+                      <p *ngIf="Banco?.hasError('required')" class="text-danger">
+                      El Banco es requerido.
+                      </p>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Guardar cuenta</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </form>
+            </div>
+          </div>
+        </div>

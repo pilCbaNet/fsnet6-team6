@@ -1,12 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-<<<<<<< HEAD
 import { LandingComponent } from './pages/landing/landing.component';
-
-
-const routes: Routes = [
-  {path: 'home', component: LandingComponent},
-=======
 import { ConfirmarIngresoComponent } from './pages/confirmar-ingreso/confirmar-ingreso.component';
 import { CotizacionComponent } from './pages/cotizacion/cotizacion.component';
 import { HomeComponent } from './pages/home/home.component';

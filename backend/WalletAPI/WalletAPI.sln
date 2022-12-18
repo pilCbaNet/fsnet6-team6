@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WalletAPI", "WalletAPI\WalletAPI.csproj", "{BBA2AD4B-8C0D-47AE-9E59-BAFAF143E824}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{D67EFC57-175D-468B-9B12-ED92B622122A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{1BBD718C-6A89-4983-B6F5-98B15EB23C1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBA2AD4B-8C0D-47AE-9E59-BAFAF143E824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA2AD4B-8C0D-47AE-9E59-BAFAF143E824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA2AD4B-8C0D-47AE-9E59-BAFAF143E824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA2AD4B-8C0D-47AE-9E59-BAFAF143E824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67EFC57-175D-468B-9B12-ED92B622122A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67EFC57-175D-468B-9B12-ED92B622122A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67EFC57-175D-468B-9B12-ED92B622122A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67EFC57-175D-468B-9B12-ED92B622122A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BBD718C-6A89-4983-B6F5-98B15EB23C1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BBD718C-6A89-4983-B6F5-98B15EB23C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BBD718C-6A89-4983-B6F5-98B15EB23C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BBD718C-6A89-4983-B6F5-98B15EB23C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0AA2A8A-1ADA-48F3-91D0-A772B2EFA7E8}
+	EndGlobalSection
+EndGlobal

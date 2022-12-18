@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/models/usuario';
+import {NuevoUsuario} from 'src/app/models/NuevoUsuario'
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -19,13 +19,29 @@ export class RegistroComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      user: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      password1: ['', [Validators.required]],
+      user: ['', [Validators.required, Validators.minLength(7)]],
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
+      cuil: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],  
+      telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      password: ['', [Validators.required, Validators.minLength(9)]],
+      password1:  ['', [Validators.required, Validators.minLength(9)]]
     });
    }
 
   ngOnInit(): void {
+  }
+
+  get Nombre() {
+    return this.form.get('nombre');
+  }
+
+  get Apellido() {
+    return this.form.get('apellido');
+  }
+
+  get Telefono() {
+    return this.form.get('telefono');
   }
 
   get Email() {
@@ -34,6 +50,11 @@ export class RegistroComponent implements OnInit {
   get User() {
     return this.form.get('user');
   }
+
+  get Cuil() {
+    return this.form.get('cuil');
+  }
+
   get Password() {
     return this.form.get('password');
   }
@@ -45,16 +66,22 @@ export class RegistroComponent implements OnInit {
   {
     if (this.form.valid) 
     {
-      let email: string = this.form.get('email')?.value;
       let user: string = this.form.get('user')?.value;
-      let password: string = this.form.get('password')?.value;
-      let password1: string = this.form.get('password1')?.value;
+      let email: string = this.form.get('email')?.value;
+      let contrasena: string = this.form.get('password')?.value;
+      let contrasena1: string = this.form.get('password1')?.value;
+      let nombre: string = this.form.get('nombre')?.value;
+      let apellido: string = this.form.get('apellido')?.value;
+      let cuil: string = this.form.get('cuil')?.value;
+      let telefono: string = this.form.get('telefono')?.value;
+    
 
-      let usuario:Usuario = new Usuario(email,user,password,password1);
+      let nuevoUsuario: NuevoUsuario = new NuevoUsuario(user, email, contrasena, nombre, apellido, cuil, telefono);
 
-      this.usuarioService.CargarUsuario(usuario).subscribe({
+      this.usuarioService.CargarUsuario(nuevoUsuario).subscribe({
         next:(v) =>{
           this.form.reset();
+          alert('Por favor inicie sesion!');
           this.router.navigate(['/iniciar-sesion']);
         },
         error:(e) => {
@@ -67,5 +94,13 @@ export class RegistroComponent implements OnInit {
       this.form.markAllAsTouched();
     }
   }
+
+  validarCorreo(correo: string)
+  {
+    var expReg= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    var esValido = expReg.test(correo);
+    return esValido;
+  }
+  
 
 }

@@ -2,13 +2,12 @@ export class Cuenta
 {
     id: string;
     alias: string;
-    cbu: number;
-    banco: string;
+    cvu: number;
+    
 
-    constructor( id: string,alias: string,cbu: number,banco: string) {
+    constructor( id: string,alias: string,cvu: number) {
         this.id = id;
         this.alias = alias;
-        this.cbu = cbu;
-        this.banco = banco;
+        this.cvu = cvu;
     }
 }

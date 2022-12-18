@@ -1,27 +1,47 @@
-<div class="conteiner d-flex justify-content-center mt-3">
-  <div class="card border-light mb-2">
-    <table *ngIf="mostrarMovimientos" class="table table-hover">
-      <thead>
-        <tr class="table-light" style="opacity: 1;">
-          <th scope="col">Tipo</th>
-          <th scope="col">Monto</th>
-          <th scope="col">Dia</th>
-          <th scope="col">Hora</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let movimiento of movimientos; let i=index" class="table">
-            <td *ngIf="i<10">{{movimiento.operacion}}</td>
-            <td *ngIf="movimiento.operacion == 'Extracción' && i<10 ;else elseBlock" style="color:red">{{movimiento.monto|currency}}</td>
-            <ng-template #elseBlock>
-              <td *ngIf="i<10" style="color:rgb(12, 245, 12)">{{movimiento.monto|currency}}</td>
-            </ng-template>
-            <td *ngIf="i<10">{{movimiento.fecha}}</td>
-            <td *ngIf="i<10">{{movimiento.hora}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="btn btn-primary">Mostrar mas movimientos</button>
+<div class="conteiner-fluid d-flex mt-1" >
+  <div class="row">
+    <h3 class="btn btn-primary"><strong>En esta seccion podras visualizar las transferencias realizadas desde y hacia una cuenta dentro de la app</strong></h3>
+    <div class="col-md-5">
+      <p><strong>Transferencias realizadas</strong></p>
+      <table *ngIf="mostrarMovimientos" class="table table-striped" style="background-color:rgb(109, 91, 226);">
+        <thead>
+          <tr class="table-light" style="opacity: 1;">
+            <th scope="col">Detalle</th>
+            <th scope="col">Importe</th>
+            <th scope="col">Fecha y Hora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transferencia of transferenciasRealizadas; let i=index" class="table">
+              <td *ngIf="i<10">{{transferencia.detalles}}</td>
+              <td *ngIf="i<10" style="color:rgb(92, 42, 30)"><strong> {{transferencia.importe|currency}}</strong></td>
+              <td *ngIf="i<10">{{transferencia.fechaHora}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5" style="margin-left: 70px;">
+      <p><strong>Transferencias recibidas</strong></p>
+      <table *ngIf="mostrarMovimientos" class="table table-striped" style="background-color:rgb(109, 91, 226);">
+        <thead>
+          <tr class="table-light" style="opacity: 1;">
+            <th scope="col">Detalle</th>
+            <th scope="col">Importe</th>
+            <th scope="col">Fecha y Hora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transferencia of transferenciasRecibidas; let i=index" class="table">
+              <td *ngIf="i<10">{{transferencia.detalles}}</td>
+              <td *ngIf="i<10" style="color:rgb(5, 118, 12)"><strong> {{transferencia.importe|currency}}</strong></td>
+              <td *ngIf="i<10">{{transferencia.fechaHora}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+
+    
+  
 

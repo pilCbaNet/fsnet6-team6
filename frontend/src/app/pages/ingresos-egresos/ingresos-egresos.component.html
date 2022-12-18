@@ -1,0 +1,39 @@
+<div class="conteiner-fluid d-flex mt-1" >
+    <div class="row">
+      <h3 class="btn btn-primary"><strong>En esta seccion podras visualizar los Egresos e Ingresos de tu cuenta</strong></h3>
+      <div class="col-md-5">
+        <p><strong>Transferencias realizadas</strong></p>
+        <table class="table table-striped" style="background-color:rgb(109, 91, 226);">
+          <thead>
+            <tr class="table-light" style="opacity: 1;">
+              <th scope="col">Importe</th>
+              <th scope="col">Fecha y Hora</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let retiro of retiros; let i=index" class="table">
+                <td *ngIf="i<10" style="color:rgb(92, 42, 30)"><strong> {{retiro.importe|currency}}</strong></td>
+                <td *ngIf="i<10">{{retiro.fechaHora}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-5" style="margin-left: 70px;">
+        <p><strong>Transferencias recibidas</strong></p>
+        <table  class="table table-striped" style="background-color:rgb(109, 91, 226);">
+          <thead>
+            <tr class="table-light" style="opacity: 1;">
+              <th scope="col">Importe</th>
+              <th scope="col">Fecha y Hora</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ingreso of ingresos; let i=index" class="table">
+                <td *ngIf="i<10" style="color:rgb(5, 118, 12)"><strong>{{ingreso.importe|currency}}</strong></td>
+                <td *ngIf="i<10">{{ingreso.fechaHora}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

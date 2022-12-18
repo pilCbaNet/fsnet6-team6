@@ -1,18 +1,127 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { StateRects } from '@popperjs/core';
 import { Observable } from 'rxjs';
-import { Cuenta } from '../models/cuenta';
-import { CuentaTercero } from '../models/cuentaTercero';
+import { Contacto } from '../models/contacto';
+import {CuentaBanco } from '../models/cuentaBanco';
+import { Operacion } from '../models/operacion';
+import { Transferencia } from '../models/transferencia';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CuentaService {
   cuentas:any;
-  saldo = 15478;
-  constructor(private http:HttpClient) { }
+  urlSaldo = 'https://localhost:7087/api/Cuentas/GetSaldo';
+  urlNuevaCuentaBanco = 'https://localhost:7087/api/Cuentas';
+  urlCvu = 'https://localhost:7087/api/Cuentas/GetCvu';
+  urlAlias = 'https://localhost:7087/api/Cuentas/GetAlias';
+  urlTrans = 'https://localhost:7087/api/Transferencias';
+  urlActualizarSaldo = 'https://localhost:7087/api/Cuentas';
+  urlContactList= 'https://localhost:7087/api/Contactos/GetContactos';
+  urlCargarContacto= 'https://localhost:7087/api/Contactos';
+  urlObtenerCuenta= 'https://localhost:7087/api/Cuentas/GetCuenta';
+  urlObtenerTransferenciasRealizadas= 'https://localhost:7087/api/Transferencias/GetEgresos';
+  urlObtenerTransferenciasRecibidas= 'https://localhost:7087/api/Transferencias/GetIngresos';
+  urlCargarCuentaBanco = 'https://localhost:7087/api/CuentaBancos';
+  urlCuentasBancosList ='https://localhost:7087/api/CuentaBancos/GetCuentasBancos';
+  urlCuentasBancosPropiasList ='https://localhost:7087/api/CuentaBancos/GetCuentasBancosPropias';
+  urlCargarOperacion= 'https://localhost:7087/api/Operaciones';
+  urlObtenerIngresos ='https://localhost:7087/api/Operaciones/GetIngresos';
+  urlObtenerRetiros ='https://localhost:7087/api/Operaciones/GetRetiros';
 
-  ObtenerUltimosMovimientos()
+  constructor(private http:HttpClient,) { }
+
+  ObtenerSaldo(id: number):Observable<any>{
+    let params = new HttpParams().set('id', id);
+    return this.http.get<any>(this.urlSaldo, {params});
+  }
+
+  BuscarCvu(cvu: string): Observable<any>{
+    let params = new HttpParams().set('cvu', cvu);
+    return this.http.get<any>(this.urlCvu, {params});
+  }
+
+  BuscarAlias(alias:string):Observable<any>{
+    let params = new HttpParams().set('alias', alias);
+    return this.http.get<any>(this.urlAlias, {params});
+  }
+
+  Transferir(transferencia: Transferencia): Observable<any>{
+    return this.http.post<any>(this.urlTrans, transferencia);
+  }
+
+  ActualizarSaldo(id: number,importe: number):Observable<any>{
+    let params = new HttpParams().set('importe', importe);
+    return this.http.put<any>(this.urlActualizarSaldo,id,{params});
+  }
+
+  ObtenerContactos(id: number):Observable<any>
+  {
+    let params = new HttpParams().set('id', id); 
+   return this.http.post<any>(this.urlContactList, id);
+  }
+
+  ObtenerCuentasBancos(id: number):Observable<any>
+  {
+    let params = new HttpParams().set('id', id); 
+   return this.http.post<any>(this.urlCuentasBancosList, id);
+  }
+
+  ObtenerCuentasBancosPropias(id: number):Observable<any>
+  {
+    let params = new HttpParams().set('id', id); 
+   return this.http.post<any>(this.urlCuentasBancosPropiasList, id);
+  }
+
+  CargarContacto(contacto: Contacto):Observable<any>
+  {
+    return this.http.post(this.urlCargarContacto,contacto);
+  }
+
+  ObtenerCuenta(idCuenta: number):Observable<any>
+  {
+    let params = new HttpParams().set('idCuenta', idCuenta);
+    return this.http.get<any>(this.urlObtenerCuenta, {params});
+  }
+
+  ObtenerTransferenciasRealizadas(idCuenta: number):Observable<any>
+  {
+    let params = new HttpParams().set('idCuenta', idCuenta)
+    return this.http.get<any>(this.urlObtenerTransferenciasRealizadas,{params})
+  }
+
+  ObtenerTransferenciasRecibidas(idCuenta: number):Observable<any>
+  {
+    let params = new HttpParams().set('idCuenta', idCuenta)
+    return this.http.get<any>(this.urlObtenerTransferenciasRecibidas,{params})
+  }
+
+  CargarCuentaBanco(cuentaBanco: CuentaBanco):Observable<any>
+  {
+    return this.http.post<any>(this.urlCargarCuentaBanco,cuentaBanco)
+  }
+
+  CargarOperacion(operacion: Operacion):Observable<any>
+  {
+    return this.http.post(this.urlCargarOperacion,operacion);
+  }
+
+  ObtenerIngresos(idCuenta: number):Observable<any>
+  {
+    let params = new HttpParams().set('idCuenta', idCuenta)
+    return this.http.get<any>(this.urlObtenerIngresos,{params})
+  }
+
+  ObtenerRetiros(idCuenta: number):Observable<any>
+  {
+    let params = new HttpParams().set('idCuenta', idCuenta)
+    return this.http.get<any>(this.urlObtenerRetiros,{params})
+  }
+
+
+
+  /* ObtenerUltimosMovimientos()
   {
    return [ {operacion:"Extracción",monto:1500,fecha: "01/10/2022",hora:"13:21"},
             {operacion:"Depósito", monto:1520,fecha: "01/10/2022",hora:"13:25"},
@@ -28,7 +137,7 @@ export class CuentaService {
             {operacion:"Extracción",monto:500, fecha: "25/10/2022",hora:"13:50"},
             {operacion:"Extracción",monto:500, fecha: "30/10/2022",hora:"13:00"},
         ];
-  }
+  } */
   ObtenerCuentasPropias()
   {
     this.cuentas= [
@@ -37,27 +146,15 @@ export class CuentaService {
     ];
     return this.cuentas ;
   }
-  ObtenerCuentasTerceros()
-  {
-    this.cuentas= [
-      {ide:"Jose",dni:34876509,banco:"Bancor", cbu:1234567878934287654345n, alias:"Jose-001"},
-      {ide:"Laura",dni:30843501,banco:"Santander", cbu:7298275466734989846521n, alias:"Laura-002"},
-    ];
-    return this.cuentas ;
-  }
+  
 
   CantCuentas(){
     return this.ObtenerCuentasPropias.length;
   }
-  CantCuentasTerceros(){
-    return this.ObtenerCuentasTerceros.length;
-  }
   
-  CargarCuenta(cuenta:Cuenta): Observable<any>{
-    return this.http.post('http://localhost:3000/posts',cuenta);
-  }
+  
 
-  CargarCuentaTercero(cuentaTercero:CuentaTercero): Observable<any>{
+  CargarCuentaTercero(cuentaTercero:CuentaBanco): Observable<any>{
     return this.http.post('http://localhost:3000/posts',cuentaTercero);
   }
 

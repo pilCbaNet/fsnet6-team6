@@ -7,16 +7,16 @@
           <form [formGroup]="form" (ngSubmit)="login()">
             <div class="mb-3">
               <label for="" class="form-label">Usuario</label>
-              <input type="usuario" formControlName="usuario" class="form-control" id="exampleInputUsuario1">
-              <div *ngIf="Usuario?.errors && Usuario?.touched">
-                <p *ngIf="Usuario?.hasError('required')" class="text-danger">
+              <input type="user" formControlName="user" class="form-control" id="User">
+              <div *ngIf="User?.errors && User?.touched">
+                <p *ngIf="User?.hasError('required')" class="text-danger">
                 El usuario es requerido.
                 </p>
                 </div>
             </div>
             <div class="mb-3">
               <label for="" class="form-label">Contraseña</label>
-              <input type="password" formControlName="password" class="form-control" id="Contraseña">
+              <input type="password" formControlName="password" class="form-control" id="Password">
               <div *ngIf="Password?.errors && Password?.touched">
                 <p *ngIf="Password?.hasError('required')" class="text-danger">
                 La contraseña es requerida.
@@ -36,9 +36,7 @@
               </div>
             </div>
           </form>
-          
           <br>
-          
         </div>
       </div>
     </div>

@@ -15,6 +15,8 @@ import { TransferirComponent } from './transferir/transferir.component';
 import { CotizacionComponent } from './cotizacion/cotizacion.component';
 import { ConfirmarIngresoComponent } from './confirmar-ingreso/confirmar-ingreso.component';
 import { TuBilleteraComponent } from './tu-billetera/tu-billetera.component';
+import { RetirarComponent } from './retirar/retirar.component';
+import { IngresosEgresosComponent } from './ingresos-egresos/ingresos-egresos.component';
 
 
 
@@ -31,6 +33,8 @@ import { TuBilleteraComponent } from './tu-billetera/tu-billetera.component';
     CotizacionComponent,
     ConfirmarIngresoComponent,
     TuBilleteraComponent,
+    RetirarComponent,
+    IngresosEgresosComponent,
   ],
   imports: [
     CommonModule,

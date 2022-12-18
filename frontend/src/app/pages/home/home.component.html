@@ -1,14 +1,14 @@
-<div class="conteiner">
+<div class="conteiner-fluid">
   <div class="row justify-content-center text-center">
     <div class="col-sm-3">
       <div class="card p-3 rounded-3" style="background-color: #FFD700;">
         <div class="card-header rounded-3 p-0">
-          <h4 style="color: rgb(3, 54, 99);">Estado de cuenta</h4>
+          <h4 style="color: rgb(3, 54, 99);"><strong>Estado de cuenta</strong></h4>
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-sm-12" (keyup)="ObtenerSaldo()">
-              <h5 Style="color: rgb(3, 54, 99);">Saldo actual: {{ObtenerSaldo()|currency}}</h5>
+            <div class="col-sm-12"  ng-init="obtenerSaldo()">
+              <h5 Style="color: rgb(3, 54, 99);"><strong>Saldo actual: {{saldo | currency}}</strong></h5>
             </div>
           </div>
         </div>
@@ -32,14 +32,20 @@
               <li class="nav-item">
                 <a class="nav-link btn btn-primary" routerLink="/home/ingresar">Ingresar dinero</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link btn btn-primary" routerLink="/home/retirar">Retirar dinero</a>
+              </li>
               <li class="nav-item ">
                 <a class="nav-link btn btn-primary" routerLink="/home/transferir">Transferir dinero</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link btn btn-primary" routerLink="/home/movimientos">Movimientos</a>
+                <a class="nav-link btn btn-primary" routerLink="/home/transferencias">Transferencias</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link btn btn-primary" routerLink="/home/cotizacion">Cotizaciones</a>
+                <a class="nav-link btn btn-primary" routerLink="/home/ingresos-egresos">Ingresos y Egresos</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link btn btn-primary" routerLink="/home/mi-cuenta">Mi cuenta</a>
               </li>
             </ul>
           </div>

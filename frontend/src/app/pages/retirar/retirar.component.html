@@ -1,0 +1,307 @@
+<div class="conteiner d-flex justify-content-center mt-3">
+    <div class="row">
+      <h3 class="btn btn-primary"><strong>En esta seccion podras visualizar una agenda de cuentas bancarias propias y no propias</strong></h3>
+      <div *ngIf="cuentasBancosPropias != 0; else elseBlock" class="col">
+        <p>Cuentas propias</p>
+        <table border="2" class="table table-striped table-dark table-hover">
+          <thead>
+            <tr class="table-dark" style="opacity: 1">
+              <th scope="col">Cbu</th>
+              <th scope="col">Descripcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let cuentaBanco of cuentasBancosPropias; let i = index"
+              class="table"
+              style="background-color: rgb(114, 129, 142)"
+            >
+              <td *ngIf="i < 10">
+                <strong>{{ cuentaBanco.cbu }}</strong>
+              </td>
+              <td *ngIf="i < 10">
+                <strong>{{ cuentaBanco.descripcion }}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="cuentasBancos != 0; else elseBlock1" class="col">
+        <p>Cuentas terceros</p>
+        <table border="2" class="table table-striped table-dark table-hover">
+          <thead>
+            <tr class="table-dark" style="opacity: 1">
+              <th scope="col">Cbu</th>
+              <th scope="col">Descripcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let cuentaBanco of cuentasBancos; let i = index"
+              class="table"
+              style="background-color: rgb(114, 129, 142)"
+            >
+              <td *ngIf="i < 10">
+                <strong>{{ cuentaBanco.cbu }}</strong>
+              </td>
+              <td *ngIf="i < 10">
+                <strong>{{ cuentaBanco.descripcion }}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #elseBlock1>
+        <div class="col">
+          <p>Usted no posee cuentas terceros!!</p>
+        </div>
+      </ng-template>
+
+      <ng-template #elseBlock>
+        <div class="col">
+          <p>Usted no posee cuentas propias!!</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  
+  <div class="conteiner d-flex justify-content-center">
+    <div class="card bg-primary mt-4" style="border-radius: 0.5rem;">
+      <div class="card-body">
+        <form [formGroup]="cbuForm" class="row d-flex justify-content-start" (ngSubmit)="retirarPorCbu()">
+          <div class="col">
+            <input type="text" class="form-control" id="Cbu" placeholder="CBU" formControlName="cbu">
+            <input type="number" class="form-control mt-3" id="Importe" placeholder="Importe" 
+            formControlName="importe"
+            min="1"
+            >
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-secondary mb-2" >Retirar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <div
+        class="btn btn-primary mt-3"
+        data-bs-toggle="modal"
+        data-bs-target="#modalCuentaPropia"
+        (click)="ObtenerBancos()"
+      >
+        Registrar cuenta propia
+      </div>
+      <div class="col">
+      <div
+        class="btn btn-primary mt-2"
+        data-bs-toggle="modal"
+        data-bs-target="#modalCuentaTercero"
+        (click)="ObtenerBancos()"
+      >
+        Registrar cuenta tercero
+      </div>
+    </div>
+  </div>
+  
+  <!-- modal cuenta propia-->
+<div class="modal" id="modalCuentaPropia">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar cuenta Propia</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="cuentaPropiaForm" (ngSubmit)="cargarCuentaBancoPropia()">
+            <div class="mb-2 text-start">
+              <label for="" class="form-label">Descripción</label>
+              <input
+                type="descripcion"
+                formControlName="descripcion"
+                class="form-control"
+                id="Descripcion"
+              />
+              <div *ngIf="DescripcionP?.errors && DescripcionP?.touched">
+                <p *ngIf="DescripcionP?.hasError('required')" class="text-danger">
+                  La descripcion es requerida.
+                </p>
+              </div>
+            </div>
+  
+            <div class="mb-2 text-start">
+              <label for="" class="form-label">CBU</label>
+              <input
+                type="cbu"
+                formControlName="cbu"
+                class="form-control"
+                id="cbuLabel"
+              />
+              <div *ngIf="CbuP?.errors && CbuP?.touched">
+                <p *ngIf="CbuP?.hasError('required')" class="text-danger">
+                  El CBU es requerido
+                </p>
+                <p *ngIf="CbuP?.errors?.minlength || CbuP?.errors?.maxlength" class="text-danger">
+                  El CBU debe ser de 22 numeros.
+                </p>
+              </div>
+            </div>
+  
+            <div class="mb-2 text-start">
+              <label class="form-label" for="banco">Banco</label>
+            </div>
+            <div class="mb-2 text-start">
+              <select id="banco" formControlName="banco" class="form-select">
+                <option value="" disabled selected >Seleccione un banco</option>
+                <option *ngFor="let banco of bancos" [ngValue]="banco">
+                  {{ banco }}
+                </option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-secondary">Guardar cuenta</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              style="margin-left: 5px;"
+            >
+              Cerrar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal cuenta tercero-->
+<div class="modal" id="modalCuentaTercero">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar cuenta Propia</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="cuentaForm" (ngSubmit)="cargarCuentaBancoTercero()">
+            <div class="mb-2 text-start">
+              <label for="" class="form-label">Descripción</label>
+              <input
+                type="descripcion"
+                formControlName="descripcion"
+                class="form-control"
+                id="Descripcion"
+              />
+              <div *ngIf="Descripcion?.errors && Descripcion?.touched">
+                <p *ngIf="Descripcion?.hasError('required')" class="text-danger">
+                  La descripcion es requerida.
+                </p>
+              </div>
+            </div>
+
+            <div class="mb-2 text-start">
+                <label for="" class="form-label">CUIL</label>
+                <input
+                  type="text"
+                  formControlName="cuil"
+                  class="form-control"
+                  id="Cuil"
+                />
+                <div *ngIf="Cuil?.errors && Cuil?.touched">
+                  <p *ngIf="Cuil?.hasError('required')" class="text-danger">
+                    El CUIL es requerido
+                  </p>
+                  <p *ngIf="Cuil?.errors?.minlength || Cuil?.errors?.maxlength" class="text-danger">
+                    El CUIL debe ser de 11 numeros.
+                  </p>
+                </div>
+              </div>
+
+            <div class="mb-2 text-start">
+                <label for="" class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  formControlName="nombre"
+                  class="form-control"
+                  id="Nombre"
+                />
+                <div *ngIf="Nombre?.errors && Nombre?.touched">
+                  <p *ngIf="Nombre?.hasError('required')" class="text-danger">
+                    El nombre es requerido.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mb-2 text-start">
+                <label for="" class="form-label">Apellido</label>
+                <input
+                  type="text"
+                  formControlName="apellido"
+                  class="form-control"
+                  id="Apellido"
+                />
+                <div *ngIf="Apellido?.errors && Apellido?.touched">
+                  <p *ngIf="Apellido?.hasError('required')" class="text-danger">
+                    El apellido es requerido.
+                  </p>
+                </div>
+              </div>
+  
+            <div class="mb-2 text-start">
+              <label for="" class="form-label">CBU</label>
+              <input
+                type="cbu"
+                formControlName="cbu"
+                class="form-control"
+                id="cbuLabel"
+              />
+              <div *ngIf="Cbu?.errors && Cbu?.touched">
+                <p *ngIf="Cbu?.hasError('required')" class="text-danger">
+                  El CBU es requerido
+                </p>
+                <p *ngIf="Cbu?.errors?.minlength || Cbu?.errors?.maxlength" class="text-danger">
+                  El CBU debe ser de 22 numeros.
+                </p>
+              </div>
+            </div>
+  
+            <div class="mb-2 text-start">
+              <label class="form-label" for="banco">Banco</label>
+            </div>
+            <div class="mb-2 text-start">
+              <select id="banco" formControlName="banco" class="form-select">
+                <option value="" disabled selected >Seleccione un banco</option>
+                <option *ngFor="let banco of bancos" [ngValue]="banco">
+                  {{ banco }}
+                </option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-secondary">Guardar cuenta</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              style="margin-left: 5px;"
+            >
+              Cerrar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

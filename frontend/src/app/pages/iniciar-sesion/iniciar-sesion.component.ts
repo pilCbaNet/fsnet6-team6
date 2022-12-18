@@ -13,14 +13,15 @@ import { IniciarSesionService } from 'src/app/services/iniciar-sesion.service';
 })
 export class IniciarSesionComponent implements OnInit {
   form: any;
+  estaLogueado: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private myService: IniciarSesionService,
+    private iniciarSesionService: IniciarSesionService,
     private router:Router
   ) {
     this.form = this.formBuilder.group({
-      usuario: ['', [Validators.required]],
+      user: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
@@ -31,7 +32,7 @@ export class IniciarSesionComponent implements OnInit {
     return this.form.get('password');
   }
 
-  get Usuario() {
+  get User() {
     return this.form.get('usuario');
   }
 
@@ -39,15 +40,25 @@ export class IniciarSesionComponent implements OnInit {
   { 
     if (this.form.valid)
     {
-      let usuario: string = this.form.get('usuario')?.value;
-      let password: string = this.form.get('password')?.value;
+      let User: string = this.form.get('user')?.value;
+      let Password: string = this.form.get('password')?.value;
 
-      let login:Login = new Login(usuario,password);
+      let login:Login = new Login(User,Password);
 
-      this.myService.iniciarSesion(login).subscribe({
-        next:(v) =>{
+      this.iniciarSesionService.iniciarSesion(login).subscribe({
+        next:(data) =>{
+          console.log(data);
+          if(data != null)
+          {
           this.form.reset();
+          this.estaLogueado = true;
           this.router.navigate(['home/tu-billetera']);
+          }
+          else
+          {
+            /* this.estaAutenticado = false; */
+            alert("Verifique sus credenciales");
+          }
         },
         error:(e) => {
           alert("Algo salio mal.")

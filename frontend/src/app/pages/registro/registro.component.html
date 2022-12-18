@@ -5,9 +5,10 @@
                 <div class="card-header bg-secondary bg-opacity-50">Registrarse</div>
                 <div class="card-body">
                     <form [formGroup]="form" (ngSubmit)="registrar()">
+
                         <div class="mb-3">
-                            <label for="" class="form-label">Correo electronico</label>
-                            <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1">
+                          <label for="" class="form-label">Correo electronico</label>
+                            <input type="text" class="form-control" formControlName="email" id="Email">                            
                             <div *ngIf="Email?.errors && Email?.touched">
                               <p *ngIf="Email?.hasError('required')" class="text-danger">
                               El email es requerido.
@@ -17,37 +18,70 @@
                                 </p>
                               </div>
                           </div>
+
                         <div class="mb-3">
                           <label for="" class="form-label">Usuario</label>
-                          <input type="usuario" class="form-control" formControlName="user" id="exampleInputUsuario1">
+                          <input type="text" class="form-control" formControlName="user" id="Usuario" onkeydown="return /[a-z,0-9]/i.test(event.key)">
                           <div *ngIf="User?.errors && User?.touched">
-                            <p *ngIf="User?.hasError('required')" class="text-danger">
-                            El usuario es requerido.
-                            </p>
+                            <p *ngIf="User?.hasError('required')" class="text-danger">El usuario es requerido.</p>
+                            <p *ngIf="User?.errors?.minlength" class="text-danger">El usuario debe tener 8 caracteres como minimo</p>
                             </div>
                         </div>
+
+                        <div class="mb-3">
+                          <label for="" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" formControlName="nombre" id="Nombre" onkeydown="return /[a-z, spacebar]/i.test(event.key)">
+                          <div *ngIf="Nombre?.errors && Nombre?.touched">
+                            <p *ngIf="Nombre?.hasError('required')" class="text-danger">El Nombre es requerido.</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="" class="form-label">Apellido</label>
+                          <input type="text" class="form-control" formControlName="apellido" id="Apellido" onkeydown="return /[a-z, spacebar]/i.test(event.key)">
+                          <div *ngIf="Apellido?.errors && Apellido?.touched">
+                            <p *ngIf="Apellido?.hasError('required')" class="text-danger">El Apellido es requerido.</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="" class="form-label">Cuil</label>
+                          <input type="text" class="form-control" formControlName="cuil" id="Cuil" onkeydown="return /[0-9,]|backspace|delete/i.test(event.key)">
+                          <div *ngIf="Cuil?.errors && Cuil?.touched">
+                            <p *ngIf="Cuil?.hasError('required')" class="text-danger">El Cuil es requerido.</p>
+                            <p *ngIf="Cuil?.errors?.minlength || Cuil?.errors?.maxlength" class="text-danger">El Cuil esta compuesto por 11 numeros sin guiones ni puntos.</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="" class="form-label">Telefono celular</label>
+                          <input type="text" class="form-control" formControlName="telefono" id="Telefono" onkeydown="return /[0-9]|backspace|delete|Arrow/i.test(event.key)">
+                          <div *ngIf="Telefono?.errors && Telefono?.touched">
+                            <p *ngIf="Telefono?.hasError('required')" class="text-danger">El telefono es requerido.</p>
+                            <p *ngIf="Telefono?.errors?.minlength || Telefono?.errors?.maxlength" class="text-danger">El telefono debe contener 10 numeros sin (0) ni (15)</p>
+                          </div>
+                        </div>
+
                         <div class="mb-3">
                           <label for="" class="form-label">Contraseña</label>
-                          <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1">
+                          <input type="password" class="form-control" formControlName="password" id="Password">
                           <div *ngIf="Password?.errors && Password?.touched">
-                            <p *ngIf="Password?.hasError('required')" class="text-danger">
-                            La contraseña es requerida.
-                            </p>
+                            <p *ngIf="Password?.hasError('required')" class="text-danger">La contraseña es requerida.</p>
+                            <p *ngIf="Password?.errors?.minlength" class="text-danger">La contraseña debe 9 caracteres como minimo.</p>
                             </div>
                         </div>
+
                         <div class="mb-3">
                             <label for="" class="form-label">Repita contraseña</label>
-                            <input type="password" class="form-control" formControlName="password1" id="exampleInputPassword1">
+                            <input type="password" class="form-control" formControlName="password1" id="Password1">
                             <div *ngIf="Password1?.errors && Password1?.touched">
-                              <p *ngIf="Password1?.hasError('required')" class="text-danger">
-                                La contraseña es requerida.
-                              </p>
+                              <p *ngIf="Password1?.hasError('required')" class="text-danger">La contraseña es requerida.</p>
+                              <p *ngIf="Password1?.errors?.minlength" class="text-danger">La contraseña debe 9 caracteres como minimo.</p>
                               </div>
                           </div>
+
                         <button type="submit" class="btn btn-secondary">Registrarse</button>
                       </form>
-                      <br>
-                      <br>
                 </div>
             </div>
         </div>

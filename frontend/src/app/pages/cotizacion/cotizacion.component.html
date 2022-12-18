@@ -1,30 +1,15 @@
-<div class="conteiner">
-  <div class="row justify-content-center">
-    <div class="col-9">
-      <table class="table table-dark mt-3">
-          <thead>
-            <tr>
-              <th scope="col">Tipo</th>
-              <th scope="col">Dolar</th>
-              <th scope="col">Euro</th>
-              <th scope="col">Real</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Compra</th>
-              <td>{{153.50|currency}}</td>
-              <td>{{154.67|currency}}</td>
-              <td>{{29.45|currency}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Venta</th>
-              <td>{{161.50|currency}}</td>
-              <td>{{155.26|currency}}</td>
-              <td>{{29.46|currency}}</td>
-            </tr>
-          </tbody>
-        </table>
+<div class="conteiner d-flex justify-content-center mt-3">
+  <div class="card bg-primary" style="width: 25rem; border-radius: 10px;">
+    <div class="card-header">
+      <h5>Mi cuenta</h5>
+    </div>
+    <div class="card-body text-start">
+      <h5 for="" class="form-label">Alias:</h5>
+      <h4 class="btn-primary btn-lg" style="color: rgb(21, 66, 45);"><strong>{{cuenta.alias}}</strong></h4>
+    </div>
+    <div class="card-body text-start">
+      <h5 for="" class="form-label">Cvu:</h5>
+      <h4 class="btn-primary btn-lg" style="color: rgb(21, 66, 45);"><strong>{{cuenta.cvu}}</strong></h4>
     </div>
   </div>
 </div>

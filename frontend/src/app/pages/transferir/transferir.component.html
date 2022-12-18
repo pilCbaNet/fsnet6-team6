@@ -1,114 +1,111 @@
-<div class="conteiner">
-    <div class="row">
-        <div class="col mt-1 d-flex justify-content-center">
-            <div class="card border-light mb-3">
-                <div class="card-header bg-light">Cuentas amigas guardadas</div>
-                <div class="card-body text-center">
-                    <div class="table table-hover border-light" style="border-collapse: collapse;">
-                        <thead *ngIf="cantCuentasTerceros == 0">
-                            <td style="color: aqua;">Identificador</td>
-                            <td style="color: aqua;">DNI</td>
-                            <td style="color: aqua;">Banco</td>
-                            <td style="color: aqua;">CBU</td>
-                            <td style="color: aqua;">Alias</td>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngIf="cantCuentasTerceros == 0">
-                                <tr *ngFor="let cuenta of cuentas; let i=index">
-                                    <td>{{cuenta.ide}}</td>
-                                    <td>{{cuenta.dni}}</td>
-                                    <td>{{cuenta.banco}}</td>
-                                    <td>{{cuenta.cbu}}</td>
-                                    <td>{{cuenta.alias}}</td>
-                                    <td class="btn bg-secondary" style="padding: 2px;">Transferir</td>
-                                </tr>
-                            </ng-container>
-                            
-                        </tbody>
 
-                    </div>
-                </div>
+        <div class="conteiner d-flex justify-content-center mt-3">
+          <div class="row">
+            <h3 class="btn btn-primary"><strong>En esta seccion podras visualizar una agenda de contactos a las que puedes transferir</strong></h3>
+            <div *ngIf="contactos.length != 0; else elseBlock" class="col">
+              <table border="2" class="table table-striped table-dark table-hover" >
+                <thead>
+                  <tr class="table-dark" style="opacity: 1;">
+                    <th scope="col">Alias</th>
+                    <th scope="col">Cvu</th>
+                    <th scope="col">Descripcion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let contacto of contactos; let i=index" class="table" style="background-color: rgb(114, 129, 142);">
+                      <td  *ngIf="i<10"><strong>{{contacto.alias}}</strong></td>
+                      <td *ngIf="i<10"><strong>{{contacto.cvu}}</strong></td>
+                      <td *ngIf="i<10"><strong>{{contacto.descripcion}}</strong></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+            <ng-template #elseBlock>
+              <div class="col">
+                <p>Usted no posee contactos!!</p>
+              </div>
+            </ng-template>
+          </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="btn btn-primary mt-1" data-bs-toggle="modal" data-bs-target="#modalCuentaTercero" >
-                Registrar nueva cuenta
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- modal -->
-<div class="modal" id="modalCuentaTercero">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Registrar nueva cuenta</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form [formGroup]="cuentaForm" (ngSubmit)="cargarCuenta()">
-              <div class="mb-2 text-start">
-                <label for="" class="form-label">Identificador</label>
-                <input type="ide" formControlName="ide" class="form-control" id="ideLabel">
-                <div *ngIf="Ide?.errors && Ide?.touched">
-                  <p *ngIf="Ide?.hasError('required')" class="text-danger">
-                  El Identificador es requerido.
-                  </p>
+        <div class="conteiner d-flex justify-content-center">
+          <div class="card bg-primary mt-4" style="border-radius: 0.5rem;">
+            <div class="card-body">
+              <form [formGroup]="aliasForm" class="row d-flex justify-content-start">
+                <div class="col">
+                  <input type="text" class="form-control" id="Alias" placeholder="Alias" formControlName="alias">
+                  <input type="text" class="form-control mt-3" id="Detalles" placeholder="Detalle" formControlName="detalles">
+                  <input type="number" class="form-control mt-3" id="Importe" placeholder="Importe" 
+                  formControlName="importe">
                 </div>
-              </div>
-              <div class="mb-2 text-start">
-                <label for="" class="form-label">DNI</label>
-                <input type="dni" formControlName="dni" class="form-control" id="dniLabel">
-                <div *ngIf="Dni?.errors && Dni?.touched">
-                  <p *ngIf="Dni?.hasError('required')" class="text-danger">
-                  El DNI es requerido.
-                  </p>
-                  <p *ngIf="Dni?.errors?.minlength || Dni?.errors?.maxlength " class="text-danger">
-                    El Dni debe ser de 8 digitos.
-                    </p>
+                <div class="col">
+                  <button type="submit" class="btn btn-secondary mb-3" (click)="transferirPorAlias()"[disabled]="!aliasForm.valid || saldoAlias()">Transferir</button>
                 </div>
-              </div>
-                <div class="mb-2 text-start">
-                  <label for="" class="form-label">Alias</label>
-                  <input type="alias" formControlName="alias" class="form-control" id="aliasLabel">
-                  <div *ngIf="Alias?.errors && Alias?.touched">
-                    <p *ngIf="Alias?.hasError('required')" class="text-danger">
-                    El Alias es requerido.
-                    </p>
-                    <p *ngIf="Alias?.errors?.minlength" class="text-danger">
-                      El Alias debe ser de 8 digitos o mas.
-                      </p>
-                    </div>
-                </div>
-                <div class="mb-2 text-start">
-                  <label for="" class="form-label">CBU</label>
-                  <input type="cbu" formControlName="cbu" class="form-control" id="cbuLabel">
-                  <div *ngIf="Cbu?.errors && Cbu?.touched">
-                    <p *ngIf="Cbu?.hasError('required')" class="text-danger">
-                    El CBU es requerido
-                    </p>
-                    <p *ngIf="Cbu?.errors?.minlength || Cbu?.errors?.maxlength " class="text-danger">
-                      El CBU debe ser de 22 numeros.
-                      </p>
-                    </div>
-                </div>
-                <div class="mb-2 text-start">
-                    <label for="" class="form-label">Banco</label>
-                    <input type="banco" formControlName="banco" class="form-control" id="bancoLabel">
-                    <div *ngIf="Banco?.errors && Banco?.touched">
-                      <p *ngIf="Banco?.hasError('required')" class="text-danger">
-                      El Banco es requerido.
-                      </p>
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Guardar cuenta</button>
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
               </form>
+            </div>
+          </div>
+          <div class="card bg-primary mt-4" style="border-radius: 0.5rem; margin-left: 3rem;">
+            <div class="card-body">
+              <form [formGroup]="cvuForm" class="row d-flex justify-content-start">
+                <div class="col">
+                  <input type="number" class="form-control" id="Cvu" placeholder="Cvu" formControlName="cvu">
+                  <input type="text" class="form-control mt-3" id="Detalles" placeholder="Detalle" formControlName="detalles">
+                  <input type="number" class="form-control mt-3" id="Importe" placeholder="Importe"  formControlName="importe">
+                </div>
+                <div class="col">
+                  <button type="submit" class="btn btn-secondary mb-3" (click)="transferirPorCvu()" [disabled]="!cvuForm.valid || saldoCvu()">Transferir</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="conteiner d-flex justify-content-center mt-3">
+          <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalNuevoContacto">Nuevo Contacto</button>
+        </div>
+        
+        <!-- Modal Nuevo contacto -->
+
+        <div class="modal" tabindex="-1" id="modalNuevoContacto">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Nuevo contacto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="nuevoContactoForm" (ngSubmit)="cargarContacto()">
+                    <div class="mb-2 text-start">
+                      <label for="" class="form-label">Alias</label>
+                      <input type="text" formControlName="alias" class="form-control" id="Alias" onkeydown="return /[a-z.]/i.test(event.key)">
+                      <div *ngIf="AliasNuevo?.errors && AliasNuevo?.touched">
+                        <p *ngIf="AliasNuevo?.hasError('required')" class="text-danger">
+                        El Alias es requerido.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="mb-2 text-start">
+                      <label for="" class="form-label">Cvu</label>
+                      <input type="text" formControlName="cvu" class="form-control" id="Cvu" onkeydown="return /[0-9]|backspace|Arrow/i.test(event.key)">
+                      <div *ngIf="CvuNuevo?.errors && CvuNuevo?.touched">
+                        <p *ngIf="CvuNuevo?.hasError('required')" class="text-danger"> El Cvu es requerido.</p>
+                        <p *ngIf="CvuNuevo?.errors?.minlength || CvuNuevo?.errors?.maxlength " class="text-danger"> El Cvu debe esta compuesto por 22 numeros.</p>
+                      </div>
+                    </div>
+                    <div class="mb-2 text-start">
+                      <label for="" class="form-label">Descripcion</label>
+                      <input type="text" formControlName="descripcion" class="form-control" id="Descripcion" onkeydown="return /[a-z spacebar]|backspace|Arrow/i.test(event.key)">
+                      <div *ngIf="DescripcionNueva?.errors && DescripcionNueva?.touched">
+                        <p *ngIf="DescripcionNueva?.hasError('required')" class="text-danger">
+                        La descripcion es requerida.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="submit" class="btn btn-secondary" style="margin-left: 7px;">Guardar Contacto</button>
+                    </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>

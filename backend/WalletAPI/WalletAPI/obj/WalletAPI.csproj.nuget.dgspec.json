@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\WalletAPI\\WalletAPI.csproj": {}
+    "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\WalletAPI\\WalletAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\Entities.csproj": {
+    "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://remoto.cubits.ar:88/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,14 +76,14 @@
         }
       }
     },
-    "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Negocio\\Negocio.csproj": {
+    "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Negocio\\Negocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Negocio\\Negocio.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Negocio\\Negocio.csproj",
         "projectName": "Negocio",
-        "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Negocio\\Negocio.csproj",
+        "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Negocio\\Negocio.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Negocio\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Negocio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -93,14 +94,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://remoto.cubits.ar:88/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\Entities.csproj"
+              "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\Entities.csproj"
               }
             }
           }
@@ -134,14 +136,14 @@
         }
       }
     },
-    "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\WalletAPI\\WalletAPI.csproj": {
+    "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\WalletAPI\\WalletAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\WalletAPI\\WalletAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\WalletAPI\\WalletAPI.csproj",
         "projectName": "WalletAPI",
-        "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\WalletAPI\\WalletAPI.csproj",
+        "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\WalletAPI\\WalletAPI.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\WalletAPI\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\WalletAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -152,17 +154,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://remoto.cubits.ar:88/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\Entities.csproj"
+              "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\Entities.csproj"
               },
-              "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Negocio\\Negocio.csproj": {
-                "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Negocio\\Negocio.csproj"
+              "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Negocio\\Negocio.csproj": {
+                "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Negocio\\Negocio.csproj"
               }
             }
           }

@@ -2018,11 +2018,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\WalletAPI\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\workspace\\GrupoF\\fsnet6-team6\\backend\\WalletAPI\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2033,6 +2033,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://remoto.cubits.ar:88/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2085,5 +2086,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://remoto.cubits.ar:88/nuget'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
 }
